@@ -19,7 +19,7 @@ app.controller('controller', function($scope) {
 		[ 'Log In', 'login.html' ],
 		[ 'Sign Up', 'signup.html' ]
 	];
-	$scope.admin = [ [ 'Products', 'products-' ] ];
+	$scope.admin = [ [ 'Index', 'index-' ], [ 'Products', 'products-' ] ];
 	$scope.company = {
 		name: 'Pulse Active',
 		motto: "Don't hesitate, activate",
@@ -81,7 +81,31 @@ app.controller('controller', function($scope) {
 			'(See shipping section for information regarding shipping)'
 		]
 	};
+	$scope.products = {
+		shirts: {
+			shirt1: {
+				size: 'L',
+				colours: [ 'Black', 'White' ],
+				type: 't-shirt',
+				name: 'Pulse Gym T-shirt',
+				description: 'A plain and robust Pulse Active t-shirt built for wicking sweat.'
+			}
+		},
+		shorts: {
+			short1: {
+				size: 'L',
+				colours: [ 'Black', 'White' ],
+				type: 'Gym',
+				name: 'Pulse Gym Shorts',
+				description: 'Some pulse styled gym shorts, to go with your pulse shirt.'
+			}
+		}
+	};
 });
+
+function edit() {
+	window.location.href = document.querySelector('#pageSelect').value + 'admin.html';
+}
 
 (function($) {
 	'use strict'; // Start of use strict
