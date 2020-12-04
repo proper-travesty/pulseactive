@@ -16,6 +16,7 @@ app.controller('controller', function($scope) {
 		[ 'Home', 'index.html' ],
 		[ 'Products', 'products.html' ],
 		[ 'Contact', '#contact' ],
+		[ 'FAQ', 'faq.html' ],
 		[ 'Log In', 'login.html' ],
 		[ 'Sign Up', 'signup.html' ]
 	];
@@ -26,7 +27,7 @@ app.controller('controller', function($scope) {
 		owner: "Munene M'mbijjewe",
 		contact: {
 			email: 'pulseactive1@gmail.com',
-			social: { instagram: { handle: 'pulseactive', link: 'www.instagram.com' } }
+			social: { instagram: { handle: 'pulse_active_ke', link: 'www.instagram.com' } }
 		},
 		description: [
 			'What is Pulse Active?',
@@ -41,8 +42,8 @@ app.controller('controller', function($scope) {
 	};
 	$scope.faq = {
 		warranty: [
-			'All our products have a 40-day warranty period that starts as soon as you have received your product.',
-			'Anything that surpasses the 40-day period will not be permitted for replacement or reimbursement.'
+			[ 'All our products have a 40-day warranty period that starts as soon as you have received your product.' ],
+			[ 'Anything that surpasses the 40-day period will not be permitted for replacement or reimbursement.' ]
 		],
 		refund: [
 			[
@@ -71,20 +72,27 @@ app.controller('controller', function($scope) {
 			]
 		],
 		shipping: [
-			'You are responsible for covering the shipping costs associated with returning the desired product.',
-			'Original shipping costs are not refunded for returned items.',
-			'If you are exchanging a defective product for another one, we shall cover the shipping costs associated with your new exchanged item.'
+			[ 'You are responsible for covering the shipping costs associated with returning the desired product.' ],
+			[ 'Original shipping costs are not refunded for returned items.' ],
+			[
+				'If you are exchanging a defective product for another one, we shall cover the shipping costs associated with your new exchanged item.'
+			]
 		],
 		defects: [
-			'If you believe that you have received a defective item, please contact us here: pulseactive1@gmail.com and attach a photo of the product. We shall inspect the product and get back to you promptly.',
-			'We are very sorry to hear this as your satisfaction is at the forefront of our mission. We shall ensure that you receive the high-quality product(s) we promised you.',
-			'(See shipping section for information regarding shipping)'
+			[
+				'If you believe that you have received a defective item, please contact us as directed below and attach a photo of the product. We shall inspect the product and get back to you promptly.'
+			],
+			[
+				'We are very sorry to hear this as your satisfaction is at the forefront of our mission. We shall ensure that you receive the high-quality product(s) we promised you.'
+			],
+			[ '(See shipping section for information regarding shipping)' ]
 		]
 	};
 	$scope.products = {
 		shirts: {
 			shirt1: {
-				size: 'L',
+				_id: '1',
+				sizes: [ 'S', 'L', 'XL' ],
 				colours: [ 'Black', 'White' ],
 				type: 't-shirt',
 				name: 'Pulse Gym T-shirt',
@@ -93,7 +101,8 @@ app.controller('controller', function($scope) {
 		},
 		shorts: {
 			short1: {
-				size: 'L',
+				_id: '2',
+				sizes: [ 'S', 'L', 'XL' ],
 				colours: [ 'Black', 'White' ],
 				type: 'Gym',
 				name: 'Pulse Gym Shorts',
@@ -101,10 +110,17 @@ app.controller('controller', function($scope) {
 			}
 		}
 	};
+	$scope.defaults = {
+		size: 'L',
+		colour: 'Black'
+	};
 });
 
 function edit() {
 	window.location.href = document.querySelector('#pageSelect').value + 'admin.html';
+}
+function addToCart() {
+	alert('Not yet implemented');
 }
 
 (function($) {
