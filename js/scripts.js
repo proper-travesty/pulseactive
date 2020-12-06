@@ -96,6 +96,7 @@ app.controller('controller', function($scope) {
 				colours: [ 'Black', 'White' ],
 				type: 't-shirt',
 				name: 'Pulse Gym T-shirt',
+				price: '29.99',
 				description: 'A plain and robust Pulse Active t-shirt built for wicking sweat.',
 				images: [ 'images/products/pulse-shirt-front.jpg' ]
 			}
@@ -107,6 +108,7 @@ app.controller('controller', function($scope) {
 				colours: [ 'Black', 'White' ],
 				type: 'Gym',
 				name: 'Pulse Gym Shorts',
+				price: '29.99',
 				description: 'Some pulse styled gym shorts, to go with your pulse shirt.',
 				images: [ 'images/products/placeholder.jpg' ]
 			}

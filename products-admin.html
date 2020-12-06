@@ -51,7 +51,11 @@
           <div id="products" ng-repeat="(name, type) in products">
             <h1 class="text-white">{{name}}</h1>
             <div ng-repeat="product in type">
+              <label for="name">Product Name</label>
               <input type="text" id="name" value="{{product.name}}" required>
+              <br />
+              <label for="price">Product Price</label>
+              <input type="text" id="price" value="{{product.price}}" required>
               <br />
               <div id="sizes">
                 <label class="text-white">Sizes</label>
@@ -68,9 +72,9 @@
                 <div ng-repeat="colour in product.colours">
                   <label>{{colour}}</label>
                   <input type="checkbox" name="colours[]" value="{{colour}}">
-                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Entry</button>
+                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Colour</button>
                 </div>
-                <button class="btn btn-primary" onclick="addEntry()">Add New Entry</button>
+                <button class="btn btn-primary" onclick="addEntry()">Add New Colour</button>
 
               </div>
 
