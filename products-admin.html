@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="pulse-web" ng-controller="controller">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>{{company.name}}</title>
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll" href="#page-top">{{company.name}}</a>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto" ng-repeat="link in links">
+          <li class="nav-item">
+            <a class="nav-link js-scroll" href="{{link[1]}}">{{link[0]}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Masthead-->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">{{company.name}}</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">Index Information Page</h2>
+        <select class="btn btn-primary" id="pageSelect" ng-model="windows.href.url" onchange="edit()">
+          <option ng-repeat="page in admin" value="{{page[1]}}">{{page[0]}}</option>
+        </select>
+
+      </div>
+    </div>
+  </header>
+  <!-- Form -->
+  <section class="about-section">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <form method="post" id="productsform" enctype="multipart/form-data" class="text-white-50 mx-auto mt-2 mb-5">
+          <div id="products" ng-repeat="(name, type) in products">
+            <h1 class="text-white">{{name}}</h1>
+            <div ng-repeat="product in type">
+              <input type="text" id="name" value="{{product.name}}" required>
+              <br />
+              <div id="sizes">
+                <label class="text-white">Sizes</label>
+                <div ng-repeat="size in product.sizes">
+                  <label>{{size}}</label>
+                  <input type="checkbox" name="sizes[]" value="{{size}}">
+                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Size</button>
+                </div>
+                <button class="btn btn-primary" onclick="addEntry()">Add New Size</button>
+
+              </div>
+              <div id="colours">
+                <label class="text-white">Colours</label>
+                <div ng-repeat="colour in product.colours">
+                  <label>{{colour}}</label>
+                  <input type="checkbox" name="colours[]" value="{{colour}}">
+                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Entry</button>
+                </div>
+                <button class="btn btn-primary" onclick="addEntry()">Add New Entry</button>
+
+              </div>
+
+              <textarea id="description" cols="30" rows="5">{{product.description}}</textarea>
+
+              <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Entry</button>
+            </div>
+            <button class="btn btn-secondary" onclick="addEntry()">Add New Entry</button>
+            <br />
+            <br />
+            <br />
+          </div>
+          <br />
+          <button class="btn btn-primary" onclick="addSecion()">Add New Section</button>
+          <br />
+          <br />
+          <button type="submit" class="btn btn-primary" onclick="saveChanges('products')">Save Changes</button>
+          <button type="submit" class="btn btn-secondary" onclick="window.location.reload(true)">Discard
+            Changes</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- End Form -->
+
+
+  <!-- Footer-->
+  <footer class="footer bg-black small text-center text-white-50">
+    <div class="container">{{company.name}} &copy;2020</div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Third party plugin JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+  <script src="js/server.js"></script>
+</body>
+
+</html>

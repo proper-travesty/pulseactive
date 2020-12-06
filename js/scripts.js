@@ -20,7 +20,7 @@ app.controller('controller', function($scope) {
 		[ 'Log In', 'login.html' ],
 		[ 'Sign Up', 'signup.html' ]
 	];
-	$scope.admin = [ [ 'Index', 'index-' ], [ 'Products', 'products-' ] ];
+	$scope.admin = [ [ 'Index', 'index' ], [ 'Products', 'products' ], [ 'FAQ', 'faq' ] ];
 	$scope.company = {
 		name: 'Pulse Active',
 		motto: "Don't hesitate, activate",
@@ -41,11 +41,11 @@ app.controller('controller', function($scope) {
 		]
 	};
 	$scope.faq = {
-		warranty: [
+		Warranty: [
 			[ 'All our products have a 40-day warranty period that starts as soon as you have received your product.' ],
 			[ 'Anything that surpasses the 40-day period will not be permitted for replacement or reimbursement.' ]
 		],
-		refund: [
+		Refund: [
 			[
 				'We shall accept any item that is returned for a refund/exchange if it is sent back within a 40-day duration from when you received the product.',
 				'After 40 days, we will unfortunately not be accepting any products for refunds/exchanges.'
@@ -71,14 +71,14 @@ app.controller('controller', function($scope) {
 				'Example: A t-shirt can only be exchanged for another t-shirt of the same model, or different model if this price is lower than the original product.'
 			]
 		],
-		shipping: [
+		Shipping: [
 			[ 'You are responsible for covering the shipping costs associated with returning the desired product.' ],
 			[ 'Original shipping costs are not refunded for returned items.' ],
 			[
 				'If you are exchanging a defective product for another one, we shall cover the shipping costs associated with your new exchanged item.'
 			]
 		],
-		defects: [
+		Defects: [
 			[
 				'If you believe that you have received a defective item, please contact us as directed below and attach a photo of the product. We shall inspect the product and get back to you promptly.'
 			],
@@ -89,24 +89,26 @@ app.controller('controller', function($scope) {
 		]
 	};
 	$scope.products = {
-		shirts: {
+		Shirts: {
 			shirt1: {
 				_id: '1',
 				sizes: [ 'S', 'L', 'XL' ],
 				colours: [ 'Black', 'White' ],
 				type: 't-shirt',
 				name: 'Pulse Gym T-shirt',
-				description: 'A plain and robust Pulse Active t-shirt built for wicking sweat.'
+				description: 'A plain and robust Pulse Active t-shirt built for wicking sweat.',
+				images: [ 'images/products/pulse-shirt-front.jpg' ]
 			}
 		},
-		shorts: {
+		Shorts: {
 			short1: {
 				_id: '2',
 				sizes: [ 'S', 'L', 'XL' ],
 				colours: [ 'Black', 'White' ],
 				type: 'Gym',
 				name: 'Pulse Gym Shorts',
-				description: 'Some pulse styled gym shorts, to go with your pulse shirt.'
+				description: 'Some pulse styled gym shorts, to go with your pulse shirt.',
+				images: [ 'images/products/placeholder.jpg' ]
 			}
 		}
 	};
@@ -117,9 +119,25 @@ app.controller('controller', function($scope) {
 });
 
 function edit() {
-	window.location.href = document.querySelector('#pageSelect').value + 'admin.html';
+	window.location.href = document.querySelector('#pageSelect').value + '-admin.html';
 }
 function addToCart() {
+	alert('Not yet implemented');
+}
+function saveChanges(page) {
+	switch (page) {
+		case 'index':
+			alert('Not yet implemented from index');
+			break;
+		default:
+			alert('Not yet implemented');
+			break;
+	}
+}
+function deleteEntry() {
+	alert('Not yet implemented');
+}
+function addEntry() {
 	alert('Not yet implemented');
 }
 

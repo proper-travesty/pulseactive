@@ -37,6 +37,7 @@
         <h1 class="mx-auto my-0 text-uppercase">{{company.name}}</h1>
         <h2 class="text-white-50 mx-auto mt-2 mb-5">Admin Control Center</h2>
         <select class="btn btn-primary" id="pageSelect" onchange="edit()">
+          <option>Select a Page</option>
           <option ng-repeat="page in admin" value="{{page[1]}}">{{page[0]}}</option>
         </select>
       </div>
