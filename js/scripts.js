@@ -1,7 +1,6 @@
 var app = angular.module('pulse-web', []);
 
 app.controller('controller', function($scope, $http) {
-	// if ($http.get('/data/').success) {
 	$scope.links = [
 		[ 'Home', 'index.html' ],
 		[ 'Products', 'products.html' ],
@@ -30,9 +29,6 @@ app.controller('controller', function($scope, $http) {
 	// 	console.log(res.data);
 	// 	$scope.products = res.data;
 	// });
-	// console.log('Database data loaded successfully');
-	// }
-	// else {
 	// $scope.links = [
 	// 	[ 'Home', 'index.html' ],
 	// 	[ 'Products', 'products.html' ],
