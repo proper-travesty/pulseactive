@@ -48,12 +48,17 @@
   <section class="about-section">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-        <form method="post" id="faqform" enctype="multipart/form-data" class="text-white-50 mx-auto mt-2 mb-5">
-          <div id="faq" ng-repeat="(name, section) in faq">
+        <form method="post" action="http://localhost:8080/faq/" id="faqform" class="text-white-50 mx-auto mt-2 mb-5">
+          <div name="faq" ng-repeat="(name, section) in faq">
             <h3 class="text-white">{{name}}</h3>
+<<<<<<< HEAD
             <div ng-repeat="answer in section">
               <textarea cols="30" rows="5">{{answer[0]}}</textarea>
               <br>
+=======
+            <div ng-repeat="answer in section track by $index">
+              <textarea id="{{name}}{{$index}}" cols="30" rows="5">{{answer[0]}}</textarea>
+>>>>>>> 34c22b99f8fbc7d7360f089e6ce41b9c3adb199f
               <button class="btn btn-secondary" onclick="deleteEntry()">Delete Entry</button>
               <br>
             </div>
@@ -64,8 +69,8 @@
           <button class="btn btn-primary" onclick="addSecion()">Add New Section</button>
           <br />
           <br />
-          <button type="submit" class="btn btn-primary" onclick="saveChanges('faq')">Save Changes</button>
-          <button type="submit" class="btn btn-secondary" onclick="window.location.reload(true)">Discard
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button class="btn btn-secondary" onclick="window.location.reload(true)">Discard
             Changes</button>
         </form>
       </div>
