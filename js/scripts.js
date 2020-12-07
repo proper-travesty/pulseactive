@@ -126,17 +126,6 @@ function edit() {
 function addToCart() {
 	alert('Not yet implemented');
 }
-function saveChanges(page) {
-	switch (page) {
-		case 'products':
-			var json = {};
-			console.log($('#productsform').children());
-			break;
-		default:
-			alert('Not yet implemented');
-			break;
-	}
-}
 function deleteEntry() {
 	// alert('Not yet implemented');
 	$(this).parent().first().remove();

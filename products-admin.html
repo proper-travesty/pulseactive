@@ -47,8 +47,9 @@
   <section class="about-section">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-        <!-- action="http://localhost:8080/products/" -->
-        <form method="post" id="productsform" class="text-white-50 mx-auto mt-2 mb-5">
+        <!--  -->
+        <form method="post" action="http://localhost:8080/products/" id="productsform"
+          class="text-white-50 mx-auto mt-2 mb-5">
           <div id="products" ng-repeat="(name, type) in products">
             <h1 class="text-white">{{name}}</h1>
             <div ng-repeat="product in type">
@@ -91,7 +92,7 @@
           <button class="btn btn-primary" onclick="addSecion()">Add New Section</button>
           <br />
           <br />
-          <button type="submit" class="btn btn-primary" onclick="saveChanges('products')">Save Changes</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
           <button class="btn btn-secondary" onclick="window.location.reload(true)">Discard
             Changes</button>
         </form>
