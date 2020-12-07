@@ -128,8 +128,9 @@ function addToCart() {
 }
 function saveChanges(page) {
 	switch (page) {
-		case 'index':
-			alert('Not yet implemented from index');
+		case 'products':
+			var json = {};
+			console.log($('#productsform').children());
 			break;
 		default:
 			alert('Not yet implemented');
@@ -137,7 +138,8 @@ function saveChanges(page) {
 	}
 }
 function deleteEntry() {
-	alert('Not yet implemented');
+	// alert('Not yet implemented');
+	$(this).parent().first().remove();
 }
 function addEntry() {
 	alert('Not yet implemented');

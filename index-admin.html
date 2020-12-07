@@ -47,7 +47,8 @@
   <section class="about-section">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-        <form method="post" id="indexform" enctype="multipart/form-data" class="text-white-50 mx-auto mt-2 mb-5">
+        <form method="post" action="http://localhost:8080/index/" id="indexform"
+          class="text-white-50 mx-auto mt-2 mb-5">
           <label for="company">Company Name</label>
           <br />
           <input type="text" id="company" name="company" placeholder="Company Name" value="{{company.name}}" required>
@@ -60,34 +61,23 @@
           <br />
           <input type="text" id="name" name="name" placeholder="Owner Name" value="{{company.owner}}" required>
           <br />
-          <label for="a1">About 1</label>
-          <br />
-          <textarea type="text" id="a1" name="a1" placeholder="Enter about paragraph 1" cols="30" rows="5"
-            required>{{company.about[0]}}</textarea>
-          <br />
-          <label for="a2">About 2</label>
-          <br />
-          <textarea type="text" id="a2" name="a2" placeholder="Enter about paragraph 2" cols="30"
-            rows="5">{{company.about[1]}}</textarea>
-          <br />
-          <label for="a3">About 3</label>
-          <br />
-          <textarea type="text" id="a3" name="a3" placeholder="Enter about paragraph 3" cols="30"
-            rows="5">{{company.about[2]}}</textarea>
-          <br />
-          <label for="a4">About 4</label>
-          <br />
-          <textarea type="text" id="a4" name="a4" placeholder="Enter about paragraph 4" cols="30"
-            rows="5">{{company.about[3]}}</textarea>
-          <br />
+          <div ng-repeat="paragraph in company.about track by $index">
+            <label for="a{{$index}}">About {{$index+1}}</label>
+            <br />
+            <textarea type="text" id="a{{$index}}" name="a{{$index}}" placeholder="Enter about paragraph {{$index}}"
+              cols="30" rows="5" required>{{company.about[$index]}}</textarea>
+            <br />
+          </div>
+
           <label for="motto">Company Motto</label>
           <br />
-          <input type="text" id="motto" name="motto" placeholder="Company Motto" value="{{company.motto}}" required>
+          <input type="text" id="prompt" name="prompt" placeholder="Company Motto" value="{{company.description[0]}}"
+            required>
           <br />
-          <label for="a4">About 4</label>
+          <label for="description">Description</label>
           <br />
-          <textarea type="text" id="a4" name="a4" placeholder="Enter about paragraph 4" cols="30"
-            rows="5">{{company.about[3]}}</textarea>
+          <textarea type="text" id="description" name="description" placeholder="Enter about paragraph 4" cols="30"
+            rows="5">{{company.description[1]}}</textarea>
           <br />
           <label for="email">Contact Email</label>
           <br />
@@ -95,8 +85,8 @@
             required>
           <br />
           <br />
-          <button type="submit" class="btn btn-primary" onclick="saveChanges('index')">Save Changes</button>
-          <button type="submit" class="btn btn-secondary" onclick="window.location.reload(true)">Discard
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button class="btn btn-secondary" onclick="window.location.reload(true)">Discard
             Changes</button>
         </form>
       </div>
