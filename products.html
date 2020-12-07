@@ -45,21 +45,21 @@
           <!-- Row -->
           <div id="{{product._id}}" class="row justify-content-center no-gutters mb-5 mb-lg-0"
             ng-repeat="product in type">
-            <div class="col-lg-6"><img class="img-fluid" src="images/demo-image-01.jpg" alt="" /></div>
+            <div class="col-lg-6"><img class="img-fluid" src="{{product.images[0]}}" alt="{{product.name}}" /></div>
             <div class="col-lg-6">
               <div class="bg-black text-center h-100 project productItem">
                 <div class="d-flex h-100">
                   <div id="{{product._id}}" class="project-text w-100 my-auto text-center text-lg-left ">
                     <h4 class="text-white">{{product.name}}</h4>
                     <select ng-model="defaults.size">
-                      <option ng-repeat="size in product.sizes" value="{{size}}">{{size}}</option>
+                      <option ng-repeat="size in defaults.sizes" value="{{size}}">{{size}}</option>
                     </select>
                     <select ng-model="defaults.colour">
-                      <option ng-repeat="colour in product.colours" value="{{colour}}">{{colour}}</option>
+                      <option ng-repeat="colour in defaults.colours" value="{{colour}}">{{colour}}</option>
                     </select>
                     <p class="mb-0 text-white-50">{{product.description}}</p>
-                    <button class="btn btn-primary" onclick="addToCart()">Add to Cart</button>
-                    <a class="btn btn-secondary" onclick="">More Info</a>
+                    <!-- <button class="btn btn-primary" onclick="addToCart()">Add to Cart</button> -->
+                    <!-- <a class="btn btn-secondary" onclick="">More Info</a> -->
                     <hr class="d-none d-lg-block mb-0 ml-0" />
                   </div>
                 </div>
@@ -70,29 +70,7 @@
       </div>
     </div>
   </header>
-  <script>
-    $(document).ready(function () {
-      $('#login').validate({ // initialize the plugin
-        rules: {
-          username: {
-            required: true,
-            minlength: 5
-          },
-          password: {
-            required: true
-          }
-        },
-        messages: {
-          username: {
-            required: "Please enter your username."
-          },
-          password: {
-            required: "Please enter your password."
-          }
-        }
-      });
-    });
-  </script>
+
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
     <div class="container">{{company.name}} &copy;2020

@@ -18,6 +18,8 @@
 </head>
 
 <body id="page-top">
+  <script>
+  </script>
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand navItem navActive" href="index.html">{{company.name}}</a>
@@ -53,49 +55,47 @@
         <!--  -->
         <form method="post" action="http://localhost:8080/products/" id="productsform"
           class="text-white-50 mx-auto mt-2 mb-5">
-          <div id="products" ng-repeat="(name, type) in products">
-            <h1 class="text-white">{{name}}</h1>
-            <div ng-repeat="product in type">
+          <div id="products" ng-repeat="(category, type) in products">
+            <h1 class="text-white">{{category}}</h1>
+            <div name="{{category}}[]" ng-repeat="product in type">
+              <!-- <div ng-repeat="image in product.images">
+                <div>
+                  <img width="100" src="{{image}}">
+                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Image</button>
+                </div>
+              </div>
+              <label for="{{product._id}}images"></label>
+              <input type="file" name="{{product._id}}images[]"> -->
+              <br />
               <label for="name">Product Name</label>
-              <input type="text" id="name" value="{{product.name}}" required>
+              <input type="text" id="name" name="name" value="{{product.name}}" required>
               <br />
               <label for="price">Product Price</label>
-              <input type="text" id="price" value="{{product.price}}" required>
+              <input type="text" id="price" name="price" value="{{product.price}}" required>
               <br />
-              <div id="sizes">
-                <label class="text-white">Sizes</label>
-                <div ng-repeat="size in product.sizes">
-                  <label>{{size}}</label>
-                  <input type="checkbox" name="sizes[]" value="{{size}}">
-                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Size</button>
+              <textarea id="description" name="description" cols="30" rows="5">{{product.description}}</textarea>
+              <!-- <br />
+              <label for="reviews">Reviews for {{product.name}}</label>
+              <br />
+              <div name="reviews[]">
+                <div id="review{{product._id}}" ng-repeat="review in reviews.1">
+                  <textarea id="review{{review.name}}" cols="20" rows="5">{{review.description}}</textarea>
+                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Review</button>
                 </div>
-                <button class="btn btn-primary" onclick="addEntry()">Add New Size</button>
-              </div>
-              <div id="colours">
-                <label class="text-white">Colours</label>
-                <div ng-repeat="colour in product.colours">
-                  <label>{{colour}}</label>
-                  <input type="checkbox" name="colours[]" value="{{colour}}">
-                  <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Colour</button>
-                </div>
-                <button class="btn btn-primary" onclick="addEntry()">Add New Colour</button>
-
-              </div>
-
-              <textarea id="description" cols="30" rows="5">{{product.description}}</textarea>
-              <br>
+              </div> -->
+              <br />
               <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Entry</button>
+              <br />
+              <br />
             </div>
             <button class="btn btn-secondary" onclick="addEntry()">Add New Entry</button>
-            <br />
-            <br />
             <br />
           </div>
           <br />
           <button class="btn btn-primary" onclick="addSecion()">Add New Section</button>
           <br />
           <br />
-          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="submit" class="btn btn-primary" onclick="saveProducts()">Save Changes</button>
           <button class="btn btn-secondary" onclick="window.location.reload(true)">Discard
             Changes</button>
         </form>

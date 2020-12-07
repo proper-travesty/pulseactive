@@ -27,14 +27,12 @@ app.use(function(req, res, next) {
 app.use(express.static(directory));
 
 app.post('/index/', function(req, res) {
-	// console.log(req);
-	// var filePath = '/images/' + req.file.originalname;
-	// fs.rename(req.file.path, directory + filePath, function(err) {
-	// 	if (err) throw err;
-	// });
-	// req.body.image = filePath;
 	console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
+		db.db(database).collection('index').deleteMany({}, function(err, res) {
+			if (err) throw err;
+			console.log('Deleted data in MongoDB.');
+		});
 		db.db(database).collection('index').insertOne(req.body, function(err, res) {
 			if (err) throw err;
 			console.log('Saved data in MongoDB.');
@@ -44,15 +42,13 @@ app.post('/index/', function(req, res) {
 	});
 });
 
-app.post('/products/', upload.single('image'), function(req, res) {
-	// console.log(req.file);
-	// var filePath = '/images/' + req.file.originalname;
-	// fs.rename(req.file.path, directory + filePath, function(err) {
-	// 	if (err) throw err;
-	// });
-	// req.body.image = filePath;
+app.post('/products/', function(req, res) {
 	console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
+		db.db(database).collection('products').deleteMany({}, function(err, res) {
+			if (err) throw err;
+			console.log('Deleted data in MongoDB.');
+		});
 		db.db(database).collection('products').insertOne(req.body, function(err, res) {
 			if (err) throw err;
 			console.log('Saved data in MongoDB.');
@@ -62,27 +58,47 @@ app.post('/products/', upload.single('image'), function(req, res) {
 	});
 });
 
-app.post('/faq/', upload.single('image'), function(req, res) {
-	// console.log(req.file);
-	// var filePath = '/images/' + req.file.originalname;
-	// fs.rename(req.file.path, directory + filePath, function(err) {
-	// 	if (err) throw err;
-	// });
-	// req.body.image = filePath;
+app.post('/faq/', function(req, res) {
 	console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
+		db.db(database).collection('faq').deleteMany({}, function(err, res) {
+			if (err) throw err;
+			console.log('Deleted data in MongoDB.');
+		});
 		db.db(database).collection('faq').insertOne(req.body, function(err, res) {
 			if (err) throw err;
 			console.log('Saved data in MongoDB.');
-			db.close();
 		});
+		db.close();
 		res.send('Your data is now saved in the MongoDB.');
 	});
 });
-app.get('/data/', function(req, res) {
+app.get('/index-data/', function(req, res) {
 	MongoClient.connect(url, function(err, db) {
 		if (err) throw err;
-		db.db(database).collection('admins').findOne({}, function(err, result) {
+		db.db(database).collection('index').findOne({}, function(err, result) {
+			if (err) throw err;
+			console.log(result);
+			res.json(result);
+			db.close();
+		});
+	});
+});
+app.get('/products-data/', function(req, res) {
+	MongoClient.connect(url, function(err, db) {
+		if (err) throw err;
+		db.db(database).collection('products').findOne({}, function(err, result) {
+			if (err) throw err;
+			console.log(result);
+			res.json(result);
+			db.close();
+		});
+	});
+});
+app.get('/faq-data/', function(req, res) {
+	MongoClient.connect(url, function(err, db) {
+		if (err) throw err;
+		db.db(database).collection('faq').findOne({}, function(err, result) {
 			if (err) throw err;
 			console.log(result);
 			res.json(result);

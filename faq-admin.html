@@ -38,7 +38,7 @@
     <div class="container d-flex h-100 align-items-center section1">
       <div class="mx-auto text-center">
         <h1 class="mx-auto my-0 text-uppercase">{{company.name}}</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">Index Information Page</h2>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">Frequently Asked Questions</h2>
         <select class="btn btn-primary" id="pageSelect" ng-model="windows.href.url" onchange="edit()">
           <option ng-repeat="page in admin" value="{{page[1]}}">{{page[0]}}</option>
         </select>
@@ -54,7 +54,7 @@
           <div name="faq" ng-repeat="(name, section) in faq">
             <h3 class="text-white">{{name}}</h3>
             <div ng-repeat="answer in section track by $index">
-              <textarea id="{{name}}{{$index}}" cols="30" rows="5">{{answer[0]}}</textarea>
+              <textarea id="{{name}}{{$index}}" name="{{name}}[]" cols="30" rows="5">{{answer}}</textarea>
               <button class="btn btn-secondary" onclick="deleteEntry()">Delete Entry</button>
               <br>
             </div>

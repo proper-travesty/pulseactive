@@ -39,10 +39,10 @@
       <div class="mx-auto text-center">
         <h1 class="mx-auto my-0 text-uppercase">{{company.name}}</h1>
         <h2 class="text-white-50 mx-auto mt-2 mb-5">Frequently Ask Questions</h2>
-        <ul id="faq" ng-repeat="section in faq">
-          <h3 class="sectionNames text-white-50">section name</h3>
+        <ul id="faq" ng-repeat="(name, section) in faq">
+          <h3 class="sectionNames text-white-50">{{name}}</h3>
           <li ng-repeat="answer in section">
-            <h5 class="itemList text-white-50">{{answer[0]}}</h5>
+            <h5 class="itemList text-white-50">{{answer}}</h5>
           </li>
         </ul>
       </div>

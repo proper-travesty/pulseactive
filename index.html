@@ -21,7 +21,7 @@
     <!-- Navigation-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand navItem navActive" href="index.html">{{company.name}}</a>
+        <a class="navbar-brand navItem navActive" href="index.html">{{index.company}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,8 +38,8 @@
     <header class="masthead">
         <div class="container d-flex h-100 align-items-center section1">
             <div class="mx-auto text-center">
-                <h1 class="mx-auto my-0 text-uppercase">{{company.name}}</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5 motto">{{company.motto}}</h2>
+                <h1 class="mx-auto my-0 text-uppercase">{{index.company}}</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5 motto">{{index.motto}}</h2>
                 <a class="btn btn-primary js-scroll" href="#about">Find Out More</a>
             </div>
         </div>
@@ -49,13 +49,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="text-white mb-4">{{company.owner}}</h2>
-                    <p class="text-white-50" ng-repeat="paragraph in company.about">
+                    <h2 class="text-white mb-4">{{index.name}}</h2>
+                    <p class="text-white-50" ng-repeat="paragraph in index.about">
                         {{paragraph}}
                     </p>
                 </div>
             </div>
-            <img class="img-fluid" src="images/ipad.png" alt="" />
+            <img class="img-fluid" src="images/dumbbells.png" alt="" />
         </div>
     </section>
     <!-- Projects-->
@@ -67,8 +67,8 @@
                         alt="" /></div>
                 <div class="col-xl-4 col-lg-5">
                     <div class="featured-text text-center text-lg-left">
-                        <h4>{{company.description[0]}}</h4>
-                        <p class="text-black-50 mb-0">{{company.description[1]}}</p>
+                        <h4>{{index.description[0]}}</h4>
+                        <p class="text-black-50 mb-0">{{index.description[1]}}</p>
                     </div>
                 </div>
             </div>
@@ -96,30 +96,19 @@
                             <i class="fas fa-envelope text-primary mb-2"></i>
                             <h4 class="text-uppercase m-0">Email</h4>
                             <hr class="my-4" />
-                            <div class="small text-black-50"><a
-                                    href="mailto:{{company.contact.email}}">{{company.contact.email}}</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <div class="card py-4 h-100">
-                        <div class="card-body text-center">
-                            <i class="fas fa-mobile-alt text-primary mb-2"></i>
-                            <h4 class="text-uppercase m-0">Phone</h4>
-                            <hr class="my-4" />
-                            <div class="small text-black-50">+1 (555) 902-8832</div>
+                            <div class="small text-black-50"><a href="mailto:{{index.email}}">{{index.email}}</a></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="social d-flex justify-content-center" ng-repeat="site in company.contact.social">
-                <a class="mx-2" href="http://{{site.link}}/{{site.handle}}/"><i class="fab fa-instagram"></i></a>
+                <a class="mx-2" href="http://instagram.com/pulse_active_ke/"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </section>
     <!-- Footer-->
     <footer class="footer bg-black small text-center text-white-50">
-        <div class="container">{{company.name}} &copy;2020</div>
+        <div class="container">{{index.company}} &copy;2020</div>
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
