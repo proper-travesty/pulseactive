@@ -21,7 +21,7 @@
   <!-- Navigation-->
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand navItem navActive" href="index.html">{{company.name}}</a>
+    <a class="navbar-brand navItem navActive" href="index.html">{{index.company}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
   <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase section1">{{company.name}}</h1>
+        <h1 class="mx-auto my-0 text-uppercase section1">{{index.company}}</h1>
         <h2 class="text-white-50 mx-auto mt-2 mb-5 motto ">Products to get your pulse up.</h2>
 
         <div class="sectionalDiv" ng-repeat="type in products">
@@ -73,7 +73,7 @@
 
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
-    <div class="container">{{company.name}} &copy;2020
+    <div class="container">{{index.company}} &copy;2020
     </div>
   </footer>
   <!-- Bootstrap core JS-->

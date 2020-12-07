@@ -6,7 +6,7 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>{{company.name}}</title>
+  <title>{{index.company}}</title>
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
@@ -20,7 +20,7 @@
 <body id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand navItem navActive" href="index.html">{{company.name}}</a>
+    <a class="navbar-brand navItem navActive" href="index.html">{{index.company}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -58,20 +58,19 @@
               <i class="fas fa-envelope text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Email</h4>
               <hr class="my-4" />
-              <div class="small text-black-50"><a href="mailto:{{company.contact.email}}">{{company.contact.email}}</a>
-              </div>
+              <div class="small text-black-50"><a href="mailto:{{index.email}}">{{index.email}}</a></div>
             </div>
           </div>
         </div>
       </div>
       <div class="social d-flex justify-content-center" ng-repeat="site in company.contact.social">
-        <a class="mx-2" href="http://{{site.link}}/{{site.handle}}/"><i class="fab fa-instagram"></i></a>
+        <a class="mx-2" href="http://instagram.com/pulse_active_ke/"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </section>
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
-    <div class="container">{{company.name}} &copy;2020</div>
+    <div class="container">{{index.company}} &copy;2020</div>
   </footer>
   <!-- Bootstrap core JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
