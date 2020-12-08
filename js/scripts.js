@@ -7,7 +7,8 @@ app.controller('controller', function($scope, $http) {
 		[ 'Contact', 'index.html#contact' ],
 		[ 'FAQ', 'faq.html' ],
 		[ 'Log In', 'login.html' ],
-		[ 'Sign Up', 'signup.html' ],
+		[ 'Sign Up', 'register.html' ],
+		[ 'Logout', 'logout.html' ],
 		[ 'Admin', 'admin.html' ]
 	];
 	$scope.admin = [ [ 'Index', 'index' ], [ 'Products', 'products' ], [ 'FAQ', 'faq' ] ];
@@ -26,7 +27,7 @@ app.controller('controller', function($scope, $http) {
 		$scope.faq = res.data;
 	});
 	$http.get('/products-data/').then(function(res) {
-		console.log(res.data);
+		// console.log(res.data);
 		$scope.products = res.data;
 	});
 	// Data for populating database, uncomment for initial run

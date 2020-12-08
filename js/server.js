@@ -1,13 +1,14 @@
-var fs = require('fs');
+// var fs = require('fs');
 var multer = require('multer');
 var upload = multer({ dest: 'images/products/' });
-var express = require('express');
+const express = require('express');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017/';
 var database = 'pulsedb';
 var directory = require('path').resolve(__dirname, '..');
 var app = express();
+
 app.use(bodyParser.json());
 app.use(
 	bodyParser.urlencoded({
@@ -26,6 +27,13 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(directory));
 
+app.get('/', function(req, res) {
+	res.set({
+		'Access-control-Allow-Origin': '*'
+	});
+	return res.redirect('index.html');
+});
+
 app.post('/index/', function(req, res) {
 	// console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
@@ -42,14 +50,14 @@ app.post('/index/', function(req, res) {
 	});
 });
 
-app.post('/products/', upload.array('image', 5), function(req, res) {
+app.post('/products/', function(req, res) {
 	// console.log(req.file);
 	// var filePath = '/images/products/' + req.file.originalname;
 	// fs.rename(req.file.path, __dirname + filePath, function(err) {
 	// 	if (err) throw err;
 	// });
 	// req.body.image = filePath;
-	console.log(req.body);
+	// console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
 		db.db(database).collection('products').deleteMany({}, function(err, res) {
 			if (err) throw err;
@@ -112,4 +120,49 @@ app.get('/faq-data/', function(req, res) {
 		});
 	});
 });
-app.listen('8080');
+// mongoose.connect(url + database);
+// var db = mongoose.connection;
+// db.on('error', console.log.bind(console, 'connection error'));
+// db.once('open', function(callback) {
+// 	console.log('connection succeeded');
+// });
+
+app.post('/register', function(req, res) {
+	console.log(req.body);
+	MongoClient.connect(url, function(err, db) {
+		// var data = {
+		// 	email: req.body.email,
+		// 	username: req.body.username,
+		// 	firstName: req.body.firstName,
+		// 	lastName: req.body.lastName,
+		// 	password: req.body.password
+		// };
+		db.db(database).collection('users').insertOne(req.body, function(err, res) {
+			if (err) throw err;
+			console.log('Saved data in MongoDB.');
+		});
+		// res.send('Your data is now saved in the MongoDB.');
+		db.close();
+	});
+	res.redirect('login.html');
+});
+
+app.get('/login', function(req, res) {
+	MongoClient.connect(url, function(err, db) {
+		if (err) throw err;
+		db.db(database).collection('users').findOne({ email: req.body.email }, function(err, result) {
+			if (err) throw err;
+			// console.log(result);
+			res.json(result);
+			db.close();
+		});
+	});
+});
+
+app.listen(process.env.PORT || 8080, function(err) {
+	if (err) {
+		console.log(err);
+	} else {
+		console.log('Server Started At Port 8080');
+	}
+});
