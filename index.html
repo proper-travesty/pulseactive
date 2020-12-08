@@ -6,7 +6,7 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>{{company.name}}</title>
+    <title>{{index.company}}</title>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -87,7 +87,7 @@
         </div>
     </section>
     <!-- Contact-->
-    <section class="contact-section bg-black">
+    <section id="contact" class="contact-section bg-black">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3 mb-md-0">
@@ -101,14 +101,14 @@
                     </div>
                 </div>
             </div>
-            <div class="social d-flex justify-content-center" ng-repeat="site in company.contact.social">
-                <a class="mx-2" href="http://instagram.com/pulse_active_ke/"><i class="fab fa-instagram"></i></a>
-            </div>
         </div>
     </section>
     <!-- Footer-->
     <footer class="footer bg-black small text-center text-white-50">
         <div class="container">{{index.company}} &copy;2020</div>
+        <div class="social d-flex justify-content-center" ng-repeat="site in company.contact.social">
+            <a class="mx-2" href="http://instagram.com/pulse_active_ke/"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

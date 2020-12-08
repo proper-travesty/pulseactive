@@ -6,7 +6,7 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>{{company.name}}</title>
+  <title>{{index.company}}</title>
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
   <!-- Google fonts-->
@@ -22,7 +22,7 @@
   </script>
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand navItem navActive" href="index.html">{{company.name}}</a>
+    <a class="navbar-brand navItem navActive" href="index.html">{{index.company}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -53,11 +53,11 @@
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
         <!--  -->
-        <form method="post" action="http://localhost:8080/products/" id="productsform"
-          class="text-white-50 mx-auto mt-2 mb-5">
-          <div id="products" ng-repeat="(category, type) in products">
-            <h1 class="text-white">{{category}}</h1>
-            <div name="{{category}}[]" ng-repeat="product in type">
+        <form method="post" action="http://localhost:8080/products/" class="text-white-50 mx-auto mt-2 mb-5"
+          enctype="multipart/form-data">
+          <div ng-repeat="(category, type) in products track by $index">
+            <h3 class="text-white">{{category}}</h3>
+            <div name="{{item.name}}" ng-repeat="item in type">
               <!-- <div ng-repeat="image in product.images">
                 <div>
                   <img width="100" src="{{image}}">
@@ -68,12 +68,12 @@
               <input type="file" name="{{product._id}}images[]"> -->
               <br />
               <label for="name">Product Name</label>
-              <input type="text" id="name" name="name" value="{{product.name}}" required>
+              <input type="text" id="name" name="name" value="{{item.name}}" required>
               <br />
               <label for="price">Product Price</label>
-              <input type="text" id="price" name="price" value="{{product.price}}" required>
+              <input type="text" id="price" name="price" value="{{item.price}}" required>
               <br />
-              <textarea id="description" name="description" cols="30" rows="5">{{product.description}}</textarea>
+              <textarea id="description" name="description" cols="30" rows="5">{{item.description}}</textarea>
               <!-- <br />
               <label for="reviews">Reviews for {{product.name}}</label>
               <br />
@@ -84,18 +84,24 @@
                 </div>
               </div> -->
               <br />
+              <label for="image">Product Image</label>
+              <br />
+              <img src="{{item.images[0]}}" width="100px" alt="No current image">
+              <input type="file" name="image[]" value="Choose file" multiple>
+              <br />
               <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Entry</button>
               <br />
               <br />
             </div>
             <button class="btn btn-secondary" onclick="addEntry()">Add New Entry</button>
             <br />
+            <br />
+            <!-- <button class="btn btn-primary" onclick="addSection()">Add New Section</button> -->
+            <br />
+            <br />
           </div>
-          <br />
-          <button class="btn btn-primary" onclick="addSecion()">Add New Section</button>
-          <br />
-          <br />
-          <button type="submit" class="btn btn-primary" onclick="saveProducts()">Save Changes</button>
+          <button type="submit" class="btn btn-primary">Save
+            Changes</button>
           <button class="btn btn-secondary" onclick="window.location.reload(true)">Discard
             Changes</button>
         </form>
@@ -103,7 +109,6 @@
     </div>
   </section>
   <!-- End Form -->
-
 
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
@@ -119,6 +124,27 @@
   <!-- Core theme JS-->
   <script src="js/scripts.js"></script>
   <script src="js/server.js"></script>
+  <!-- <script>
+    $(document).ready(function () {
+      let imagesPreview = function (input, placeToInsertImagePreview) {
+        if (input.files) {
+          let filesAmount = input.files.length;
+          for (i = 0; i < filesAmount; i++) {
+            let reader = new FileReader();
+            reader.onload = function (event) {
+              $($.parseHTML("<img>"))
+                .attr("src", event.target.result)
+                .appendTo(placeToInsertImagePreview);
+            };
+            reader.readAsDataURL(input.files[i]);
+          }
+        }
+      };
+      $("#input-images").on("change", function () {
+        imagesPreview(this, "div.preview-images");
+      });
+    });
+  </script> -->
 </body>
 
 </html>

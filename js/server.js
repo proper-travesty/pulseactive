@@ -1,6 +1,6 @@
 var fs = require('fs');
 var multer = require('multer');
-var upload = multer({ dest: 'images/' });
+var upload = multer({ dest: 'images/products/' });
 var express = require('express');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 app.use(express.static(directory));
 
 app.post('/index/', function(req, res) {
-	console.log(req.body);
+	// console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
 		db.db(database).collection('index').deleteMany({}, function(err, res) {
 			if (err) throw err;
@@ -42,7 +42,13 @@ app.post('/index/', function(req, res) {
 	});
 });
 
-app.post('/products/', function(req, res) {
+app.post('/products/', upload.array('image', 5), function(req, res) {
+	// console.log(req.file);
+	// var filePath = '/images/products/' + req.file.originalname;
+	// fs.rename(req.file.path, __dirname + filePath, function(err) {
+	// 	if (err) throw err;
+	// });
+	// req.body.image = filePath;
 	console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
 		db.db(database).collection('products').deleteMany({}, function(err, res) {
@@ -59,7 +65,7 @@ app.post('/products/', function(req, res) {
 });
 
 app.post('/faq/', function(req, res) {
-	console.log(req.body);
+	// console.log(req.body);
 	MongoClient.connect(url, function(err, db) {
 		db.db(database).collection('faq').deleteMany({}, function(err, res) {
 			if (err) throw err;
@@ -78,7 +84,7 @@ app.get('/index-data/', function(req, res) {
 		if (err) throw err;
 		db.db(database).collection('index').findOne({}, function(err, result) {
 			if (err) throw err;
-			console.log(result);
+			// console.log(result);
 			res.json(result);
 			db.close();
 		});
@@ -89,7 +95,7 @@ app.get('/products-data/', function(req, res) {
 		if (err) throw err;
 		db.db(database).collection('products').findOne({}, function(err, result) {
 			if (err) throw err;
-			console.log(result);
+			// console.log(result);
 			res.json(result);
 			db.close();
 		});
@@ -100,7 +106,7 @@ app.get('/faq-data/', function(req, res) {
 		if (err) throw err;
 		db.db(database).collection('faq').findOne({}, function(err, result) {
 			if (err) throw err;
-			console.log(result);
+			// console.log(result);
 			res.json(result);
 			db.close();
 		});

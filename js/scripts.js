@@ -29,6 +29,7 @@ app.controller('controller', function($scope, $http) {
 	// 	console.log(res.data);
 	// 	$scope.products = res.data;
 	// });
+	// Data for populating database, uncomment for initial run
 	// $scope.links = [
 	// 	[ 'Home', 'index.html' ],
 	// 	[ 'Products', 'products.html' ],
@@ -125,7 +126,7 @@ function addToCart() {
 }
 function deleteEntry() {
 	// alert('Not yet implemented');
-	e.preventDefault();
+	console.log($(this));
 	$(this).parent().first().remove();
 }
 function addEntry() {
@@ -133,55 +134,12 @@ function addEntry() {
 	alert('Not yet implemented');
 }
 
-function saveProducts() {
-	form = $(this).parent().eq(0);
-}
+// function saveProducts() {
+// 	category = $('#products').children()[0];
+// 	console.log('category: ' + category.innerText);
 
-// (function($) {
-// 	'use strict'; // Start of use strict
+// 	form = $('#productsForm').serializeArray();
+// 	console.log(form);
 
-// 	// Smooth scrolling using jQuery easing
-// 	$('a.js-scroll[href*="#"]:not([href="#"])').click(function() {
-// 		if (
-// 			location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
-// 			location.hostname == this.hostname
-// 		) {
-// 			var target = $(this.hash);
-// 			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-// 			if (target.length) {
-// 				$('html, body').animate(
-// 					{
-// 						scrollTop: target.offset().top - 70
-// 					},
-// 					1000,
-// 					'easeInOutExpo'
-// 				);
-// 				return false;
-// 			}
-// 		}
-// 	});
-
-// 	// Closes responsive menu when a scroll trigger link is clicked
-// 	$('.js-scroll').click(function() {
-// 		$('.navbar-collapse').collapse('hide');
-// 	});
-
-// 	// Activate scrollspy to add active class to navbar items on scroll
-// 	$('body').scrollspy({
-// 		target: '#mainNav',
-// 		offset: 100
-// 	});
-
-// 	// Collapse Navbar
-// 	var navbarCollapse = function() {
-// 		if ($('#mainNav').offset().top > 100) {
-// 			$('#mainNav').addClass('navbar-shrink');
-// 		} else {
-// 			$('#mainNav').removeClass('navbar-shrink');
-// 		}
-// 	};
-// 	// Collapse now if page is not at top
-// 	navbarCollapse();
-// 	// Collapse the navbar when page is scrolled
-// 	$(window).scroll(navbarCollapse);
-// })(jQuery); // End of use strict
+// 	// console.log(form);
+// }
