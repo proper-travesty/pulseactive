@@ -4,7 +4,7 @@ app.controller('controller', function($scope, $http) {
 	$scope.links = [
 		[ 'Home', 'index.html' ],
 		[ 'Products', 'products.html' ],
-		[ 'Contact', '#contact' ],
+		[ 'Contact', 'index.html#contact' ],
 		[ 'FAQ', 'faq.html' ],
 		[ 'Log In', 'login.html' ],
 		[ 'Sign Up', 'signup.html' ],
@@ -25,10 +25,10 @@ app.controller('controller', function($scope, $http) {
 		// console.log(res.data);
 		$scope.faq = res.data;
 	});
-	// $http.get('/products-data/').then(function(res) {
-	// 	console.log(res.data);
-	// 	$scope.products = res.data;
-	// });
+	$http.get('/products-data/').then(function(res) {
+		console.log(res.data);
+		$scope.products = res.data;
+	});
 	// Data for populating database, uncomment for initial run
 	// $scope.links = [
 	// 	[ 'Home', 'index.html' ],
@@ -83,28 +83,28 @@ app.controller('controller', function($scope, $http) {
 	// 		'(See shipping section for information regarding shipping)'
 	// 	]
 	// };
-	$scope.products = {
-		Shirts: {
-			shirt1: {
-				_id: '1',
-				type: 't-shirt',
-				name: 'Pulse Gym T-shirt',
-				price: '29.99',
-				description: 'A plain and robust Pulse Active t-shirt built for wicking sweat.',
-				images: [ 'images/products/pulse-shirt-front.jpg' ]
-			}
-		},
-		Shorts: {
-			short1: {
-				_id: '2',
-				type: 'Gym',
-				name: 'Pulse Gym Shorts',
-				price: '29.99',
-				description: 'Some pulse styled gym shorts, to go with your pulse shirt.',
-				images: [ 'images/products/placeholder.jpg' ]
-			}
-		}
-	};
+	// $scope.products = {
+	// 	Shirts: {
+	// 		shirt1: {
+	// 			_id: '1',
+	// 			type: 't-shirt',
+	// 			name: 'Pulse Gym T-shirt',
+	// 			price: '29.99',
+	// 			description: 'A plain and robust Pulse Active t-shirt built for wicking sweat.',
+	// 			images: [ 'images/products/pulse-shirt-front.jpg' ]
+	// 		}
+	// 	},
+	// 	Shorts: {
+	// 		short1: {
+	// 			_id: '2',
+	// 			type: 'Gym',
+	// 			name: 'Pulse Gym Shorts',
+	// 			price: '29.99',
+	// 			description: 'Some pulse styled gym shorts, to go with your pulse shirt.',
+	// 			images: [ 'images/products/placeholder.jpg' ]
+	// 		}
+	// 	}
+	// };
 	// $scope.reviews = {
 	// 	'1': [ { rating: 7, review: "Great shirt, I'll definitely be buying another!", name: 'John Smith' } ],
 	// 	'2': [ { rating: 7, review: "Great shorts, I'll definitely be buying another!", name: 'John Smith' } ]
