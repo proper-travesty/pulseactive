@@ -73,14 +73,67 @@ Signup Form Section Start
             <br />
             <input type="password" id="password" name="password" placeholder="Enter your Password" required>
             <br />
-            <p>
-              <button type="submit" class="btn btn-primary js-scroll">Login</button>
+            <button type="submit" class="btn btn-primary js-scroll">Login</button>
+            <br />
+            <label for="usertype">"Hidden" User Type ("admin" for admin)</label>
+            <br />
+            <input type="text" name="usertype" value="user">
             </p>
           </form>
         </div>
       </div>
     </div>
   </section><!-- /#signup -->
+  <script>
+    $(document).ready(function () {
+      $('#login').validate({ // initialize the plugin
+        rules: {
+          email: {
+            required: true,
+            minlength: 5
+          },
+          username: {
+            required: true,
+            minlength: 5
+          },
+          firstName: {
+            required: true,
+            minlength: 5
+          },
+          lastName: {
+            required: true,
+            minlength: 5
+          },
+          password: {
+            required: true
+          },
+          usertype: {
+            required: true
+          }
+        },
+        messages: {
+          email: {
+            required: "Please enter your email."
+          },
+          username: {
+            required: "Please enter your username."
+          },
+          firstName: {
+            required: "Please enter your first name."
+          },
+          lastName: {
+            required: "Please enter your last name."
+          },
+          password: {
+            required: "Please enter your password."
+          },
+          usertype: {
+            required: "Please enter your usertype."
+          }
+        }
+      });
+    });
+  </script>
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
     <div class="container">{{index.company}} &copy;2020</div>

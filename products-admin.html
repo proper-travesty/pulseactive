@@ -55,9 +55,9 @@
         <!--  -->
         <form method="post" action="http://localhost:8080/products/" class="text-white-50 mx-auto mt-2 mb-5"
           enctype="multipart/form-data">
-          <div ng-repeat="(category, type) in products track by $index">
-            <h3 class="text-white">{{category}}</h3>
-            <div name="{{item.name}}" ng-repeat="item in type">
+          <div ng-repeat="(category, type) in products.name track by $index">
+            <h3 class="text-white">{{type}}</h3>
+            <div name="{{products.name[$index]}}">
               <!-- <div ng-repeat="image in product.images">
                 <div>
                   <img width="100" src="{{image}}">
@@ -68,12 +68,13 @@
               <input type="file" name="{{product._id}}images[]"> -->
               <br />
               <label for="name">Product Name</label>
-              <input type="text" id="name" name="name" value="{{item.name}}" required>
+              <input type="text" id="name" name="name" value="{{products.name[$index]}}" required>
               <br />
               <label for="price">Product Price</label>
-              <input type="text" id="price" name="price" value="{{item.price}}" required>
+              <input type="text" id="price" name="price" value="{{products.price[$index]}}" required>
               <br />
-              <textarea id="description" name="description" cols="30" rows="5">{{item.description}}</textarea>
+              <textarea id="description" name="description" cols="30"
+                rows="5">{{products.description[$index]}}</textarea>
               <!-- <br />
               <label for="reviews">Reviews for {{product.name}}</label>
               <br />
@@ -84,10 +85,6 @@
                 </div>
               </div> -->
               <br />
-              <label for="image">Product Image</label>
-              <br />
-              <img src="{{item.images[0]}}" width="100px" alt="No current image">
-              <input type="file" name="image[]" value="Choose file" multiple>
               <br />
               <button class="btn btn-secondary text-white" onclick="deleteEntry()">Delete Entry</button>
               <br />

@@ -8,6 +8,11 @@ var url = 'mongodb://localhost:27017/';
 var database = 'pulsedb';
 var directory = require('path').resolve(__dirname, '..');
 var app = express();
+const cookieSettings = {
+	httpOnly: true, // disable client access
+	maxAge: 60 * 60 * 24 * 10, // 10 days
+	signed: false // not signed
+};
 
 app.use(bodyParser.json());
 app.use(
@@ -147,15 +152,17 @@ app.post('/register', function(req, res) {
 	res.redirect('login.html');
 });
 
-app.get('/login', function(req, res) {
+app.post('/login', function(req, res) {
 	MongoClient.connect(url, function(err, db) {
 		if (err) throw err;
-		db.db(database).collection('users').findOne({ email: req.body.email }, function(err, result) {
-			if (err) throw err;
-			// console.log(result);
-			res.json(result);
-			db.close();
-		});
+		db
+			.db(database)
+			.collection('users')
+			.findOne({ username: req.body.username, password: req.body.password }, function(err, result) {
+				if (err) throw err;
+				res.cookie('user', result, cookieSettings);
+				db.close();
+			});
 	});
 });
 
